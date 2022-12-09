@@ -31,11 +31,12 @@ steps:
         $allLogs = check.ps1
       }
       catch {
-        #$success = $false
-        #$errorMessage = $_
+        $success = $false
+        $errorMessage = $_
       }
 
       Write-Host "Logs....."
+      $allLogs | Write-Host
 
       if (-Not $success) {
         Write-Error $errorMessage
