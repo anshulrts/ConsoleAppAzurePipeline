@@ -40,7 +40,7 @@ steps:
 
 
       if (-Not $success) {
-        Write-Error $errorMessage
+        #Write-Error $errorMessage
       }
   
 - task: VSTest@2
