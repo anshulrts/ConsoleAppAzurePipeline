@@ -14,6 +14,13 @@ variables:
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
+
+- task: VSBuild@1
+  inputs:
+    solution: '$(solution)'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+
 - task: PowerShell@2
   displayName: Check Security/Common DB
   inputs:
@@ -28,3 +35,8 @@ variables:
       $allLogs = check.ps1
 
       Write-Host "Logs....."
+
+- task: VSTest@2
+  inputs:
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
