@@ -27,7 +27,13 @@ steps:
       $allLogs = $null
       $success = $true
       $errorMessage = ""
-      $allLogs = check.ps1
+      try {
+        $allLogs = check.ps1
+      }
+      catch {
+        $success = $false
+        $errorMessage = $_
+      }
 
       Write-Host "Logs....."
   
