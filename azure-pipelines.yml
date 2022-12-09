@@ -14,19 +14,6 @@ variables:
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
-steps:
-- task: NuGetToolInstaller@1
-
-- task: NuGetCommand@2
-  inputs:
-    restoreSolution: '$(solution)'
-
-- task: VSBuild@1
-  inputs:
-    solution: '$(solution)'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
-
 - task: PowerShell@2
   displayName: Check Security/Common DB
   inputs:
@@ -38,21 +25,6 @@ steps:
       $allLogs = $null
       $success = $true
       $errorMessage = ""
-      try {
-          $allLogs = check.ps1
-      } catch {
-          $success = $false
-          $errorMessage = $_
-      }
+      $allLogs = check.ps1
 
-      Write-Host "Log File name: $fileName"
       Write-Host "Logs....."
-  
-      if (-Not $success) {
-          Write-Error $errorMessage
-      }
-
-- task: VSTest@2
-  inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
