@@ -19,6 +19,7 @@ steps:
   displayName: Check Security/Common DB
   inputs:
     pwsh: true
+    continueOnError: true
     targetType: 'inline'
     script: |
       # Write your PowerShell commands here.
