@@ -17,9 +17,9 @@ variables:
 steps:
 - task: PowerShell@2
   displayName: Check Security/Common DB
+  continueOnError: true
   inputs:
     pwsh: true
-    continueOnError: true
     targetType: 'inline'
     script: |
       # Write your PowerShell commands here.
