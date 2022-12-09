@@ -34,6 +34,8 @@ steps:
         $errorMessage = $_
       }
 
+      Write-Error $errorMessage
+
       Write-Host "Logs....."
       $allLogs | Write-Host
       Write-Host "After..."
