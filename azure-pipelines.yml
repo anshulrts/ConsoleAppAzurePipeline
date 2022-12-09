@@ -31,24 +31,28 @@ steps:
   displayName: Check Security/Common DB
   continueOnError: true
   inputs:
-      pwsh: true
-      targetType: 'inline'
-      script: |
-      # Write your PowerShell commands here.
-      Write-Host "Reached Here-----------------*-------------------"
-      $allLogs = $null
-      $success = $true
-      $errorMessage = ""
-      try {
-          $allLogs = check.ps1
-      } catch {
-          $success = $false
-          $errorMessage = $_
-      }
+    pwsh: true
+    targetType: 'inline'
+    script: |
+    # Write your PowerShell commands here.
+    Write-Host "Reached Here-----------------*-------------------"
+    $allLogs = $null
+    $success = $true
+    $errorMessage = ""
+    try {
+        $allLogs = check.ps1
+    } catch {
+        $success = $false
+        $errorMessage = $_
+    }
+
+    Write-Host "Log File name: $fileName"
+    Write-Host "Logs....."
+    $allLogs | Write-Host
   
-      if (-Not $success) {
-          Write-Error $errorMessage
-      }
+    if (-Not $success) {
+        Write-Error $errorMessage
+    }
 
 - task: VSTest@2
   inputs:
