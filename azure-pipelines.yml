@@ -37,6 +37,8 @@ steps:
 
       Write-Host "Logs....."
       $allLogs | Write-Host
+      Write-Host "After..."
+
 
       if (-Not $success) {
         Write-Error $errorMessage
