@@ -47,7 +47,6 @@ steps:
 
       Write-Host "Log File name: $fileName"
       Write-Host "Logs....."
-      $allLogs | Write-Host
   
       if (-Not $success) {
           Write-Error $errorMessage
