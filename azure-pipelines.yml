@@ -28,27 +28,27 @@ steps:
     configuration: '$(buildConfiguration)'
 
 - task: PowerShell@2
-    displayName: Check Security/Common DB
-    continueOnError: true
-    inputs:
+  displayName: Check Security/Common DB
+  continueOnError: true
+  inputs:
       pwsh: true
       targetType: 'inline'
       script: |
-        # Write your PowerShell commands here.
-        Write-Host "Reached Here-----------------*-------------------"
-        $allLogs = $null
-        $success = $true
-        $errorMessage = ""
-        try {
+      # Write your PowerShell commands here.
+      Write-Host "Reached Here-----------------*-------------------"
+      $allLogs = $null
+      $success = $true
+      $errorMessage = ""
+      try {
           $allLogs = check.ps1
-        } catch {
+      } catch {
           $success = $false
           $errorMessage = $_
-        }
-
-        if (-Not $success) {
+      }
+  
+      if (-Not $success) {
           Write-Error $errorMessage
-        }
+      }
 
 - task: VSTest@2
   inputs:
