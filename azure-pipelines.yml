@@ -68,6 +68,7 @@ stages:
 
   - job: SecondJob
     displayName: 'Second Job'
+    dependsOn: FirstJob
     steps:
     - task: PowerShell@2
       displayName: First Step
