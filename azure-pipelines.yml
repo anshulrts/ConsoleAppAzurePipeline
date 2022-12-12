@@ -14,47 +14,54 @@ variables:
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
-steps:
-- task: PowerShell@2
-  displayName: Check Security/Common DB
-  inputs:
-    pwsh: true
-    targetType: 'inline'
-    script: |
-      # Write your PowerShell commands here.
-      Write-Host "Reached Here-----------------*-------------------"
-      $allLogs = $null
-      $success = $true
-      $errorMessage = ""
-      try {
-        $allLogs = check.ps1
-      }
-      catch {
-        $success = $false
-        $errorMessage = $_
-      }
 
-      Write-Host "Logs....."
-      $allLogs | Write-Host
-      Write-Host "After..."
+stages:
+- stage: Parent
+  displayName: 'Parent'
+  jobs:
+  - job: FirstJob
+    displayName: 'First Job'
+    steps:
+    - task: PowerShell@2
+      displayName: Check Security/Common DB
+      inputs:
+        pwsh: true
+        targetType: 'inline'
+        script: |
+          # Write your PowerShell commands here.
+          Write-Host "Reached Here-----------------*-------------------"
+          $allLogs = $null
+          $success = $true
+          $errorMessage = ""
+          try {
+            $allLogs = check.ps1
+          }
+          catch {
+            $success = $false
+            $errorMessage = $_
+          }
+
+          Write-Host "Logs....."
+          $allLogs | Write-Host
+          Write-Host "After..."
 
 
-      if (-Not $success) {
-        Write-Error $errorMessage
-      }
+          if (-Not $success) {
+            Write-Error $errorMessage
+          }
   
-- task: VSTest@2
-  condition: failed()
-  displayName: Run this if Check fails
-  inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+    - task: VSTest@2
+      condition: failed()
+      displayName: Run this if Check fails
+      inputs:
+        platform: '$(buildPlatform)'
+        configuration: '$(buildConfiguration)'
 
-- task: PowerShell@2
-  displayName: New Step
-  inputs:
-    pwsh: true
-    targetType: 'inline'
-    script: |
-      # Write your PowerShell commands here.
-      Write-Host "This is new step"
+    - task: PowerShell@2
+      displayName: New Step
+      inputs:
+        pwsh: true
+        targetType: 'inline'
+        script: |
+          # Write your PowerShell commands here.
+          Write-Host "This is new step"
