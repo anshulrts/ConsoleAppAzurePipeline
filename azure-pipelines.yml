@@ -17,7 +17,6 @@ variables:
 steps:
 - task: PowerShell@2
   displayName: Check Security/Common DB
-  continueOnError: true
   inputs:
     pwsh: true
     targetType: 'inline'
@@ -35,15 +34,13 @@ steps:
         $errorMessage = $_
       }
 
-      Write-Error $errorMessage
-
       Write-Host "Logs....."
       $allLogs | Write-Host
       Write-Host "After..."
 
 
       if (-Not $success) {
-        #Write-Error $errorMessage
+        Write-Error $errorMessage
       }
   
 - task: VSTest@2
