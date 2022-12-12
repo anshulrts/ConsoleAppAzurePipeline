@@ -45,6 +45,7 @@ steps:
   
 - task: VSTest@2
   condition: failed()
+  displayName: Run this if Check fails
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
