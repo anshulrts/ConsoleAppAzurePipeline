@@ -22,6 +22,7 @@ stages:
   - job: FirstJob
     displayName: 'First Job'
     steps:
+    - script: echo This is the first step
     - task: PowerShell@2
       displayName: Check Security/Common DB
       inputs:
