@@ -17,7 +17,7 @@ variables:
 
 stages:
 - stage: Parent
-  displayName: 'Parent'
+  displayName: 'Parent - This is a Stage'
   jobs:
   - job: FirstJob
     displayName: 'First Job'
@@ -65,3 +65,15 @@ stages:
         script: |
           # Write your PowerShell commands here.
           Write-Host "This is new step"
+
+  - job: SecondJob
+    displayName: 'Second Job'
+    steps:
+    - task: PowerShell@2
+      displayName: First Step
+      inputs:
+        pwsh: true
+        targetType: 'inline'
+        script: |
+          # Write your PowerShell commands here.
+          Write-Host "This is the first step of second job"
