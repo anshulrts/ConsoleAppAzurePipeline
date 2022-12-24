@@ -78,4 +78,16 @@ stages:
         targetType: 'inline'
         script: |
           # Write your PowerShell commands here.
-          Write-Host "This is the first step of second job"
+          Write-Host "This is the first step of second job. This will run only if First Job succeeds because it dependsOn: FirstJob"
+  
+  - job: ThirdJob
+    displayName: 'Third Job'
+    steps:
+    - task: PowerShell@2
+      displayName: First Step
+      inputs:
+        pwsh: true
+        targetType: 'inline'
+        script: |
+          # Write your PowerShell commands here.
+          Write-Host "This job and step will always run as it does not dependsOn and job"
