@@ -66,6 +66,15 @@ stages:
       inputs:
         platform: '$(buildPlatform)'
         configuration: '$(buildConfiguration)'
+    
+    - task: PowerShell@2
+      displayName: Check if this Runs
+      inputs:
+        pwsh: true
+        targetType: 'inline'
+        script: |
+          # Write your PowerShell commands here.
+          Write-Host "Here condition is not set. See if this fails because of Check step"
 
   - job: SecondJob
     displayName: 'Second Job'
