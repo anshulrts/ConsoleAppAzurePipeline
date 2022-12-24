@@ -21,6 +21,7 @@ stages:
   jobs:
   - job: FirstJob
     displayName: 'First Job'
+    continueOnError: true
     steps:
     - script: echo This is the first step
     - task: PowerShell@2
