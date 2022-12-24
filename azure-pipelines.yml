@@ -92,6 +92,10 @@ stages:
   - job: ThirdJob
     displayName: 'Third Job'
     steps:
+    - script: |
+        echo "First time"
+      displayName: First Step
+    
     - task: PowerShell@2
       displayName: First Step
       inputs:
