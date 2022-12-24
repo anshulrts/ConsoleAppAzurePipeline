@@ -67,27 +67,17 @@ stages:
         platform: '$(buildPlatform)'
         configuration: '$(buildConfiguration)'
     
-    - task: PowerShell@2
+    - script: |
+        echo Here condition is not set. And the step immediately before it succeeds. Still this step will not run because of Check step
       displayName: Check if this Runs
-      inputs:
-        pwsh: true
-        targetType: 'inline'
-        script: |
-          # Write your PowerShell commands here.
-          Write-Host "Here condition is not set. And the step immediately before it succeeds. Still this step will not run because of Check step"
 
   - job: SecondJob
     displayName: 'Second Job'
     dependsOn: FirstJob
     steps:
-    - task: PowerShell@2
+    - script: |
+        echo This is the first step of second job. This will run only if First Job succeeds because it dependsOn: FirstJob
       displayName: First Step
-      inputs:
-        pwsh: true
-        targetType: 'inline'
-        script: |
-          # Write your PowerShell commands here.
-          Write-Host "This is the first step of second job. This will run only if First Job succeeds because it dependsOn: FirstJob"
   
   - job: ThirdJob
     displayName: 'Third Job'
