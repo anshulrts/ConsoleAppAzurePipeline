@@ -21,7 +21,7 @@ stages:
   jobs:
   - job: FirstJob
     displayName: 'First Job'
-    continueOnError: true
+    continueOnError: true #Setting it here means that continue any other job which depends on it. So in this case, Second job will continue, but steps within this job will be skipped.
     steps:
     - script: echo This is the first step
     - task: PowerShell@2
