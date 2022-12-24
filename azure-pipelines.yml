@@ -50,13 +50,6 @@ stages:
           if (-Not $success) {
             Write-Error $errorMessage
           }
-  
-    - task: VSTest@2
-      condition: failed()
-      displayName: Run this if Check fails
-      inputs:
-        platform: '$(buildPlatform)'
-        configuration: '$(buildConfiguration)'
 
     - task: PowerShell@2
       displayName: New Step
@@ -66,6 +59,13 @@ stages:
         script: |
           # Write your PowerShell commands here.
           Write-Host "This is new step"
+    
+    - task: VSTest@2
+      condition: failed()
+      displayName: Run this if Check fails
+      inputs:
+        platform: '$(buildPlatform)'
+        configuration: '$(buildConfiguration)'
 
   - job: SecondJob
     displayName: 'Second Job'
