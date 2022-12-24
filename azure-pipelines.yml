@@ -93,14 +93,5 @@ stages:
     displayName: 'Third Job'
     steps:
     - script: |
-        echo "First time"
+        echo This job and step will always run as it does not dependsOn any job. It might even run before First Job because each job is independent of another
       displayName: First Step
-    
-    - task: PowerShell@2
-      displayName: First Step
-      inputs:
-        pwsh: true
-        targetType: 'inline'
-        script: |
-          # Write your PowerShell commands here.
-          Write-Host "This job and step will always run as it does not dependsOn any job. It might even run before First Job because each job is independent of another"
