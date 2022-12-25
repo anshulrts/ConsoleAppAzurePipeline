@@ -80,6 +80,12 @@ stages:
     - script: |
         echo This is the first step of second job. This will run only if First Job succeeds because it dependsOn: FirstJob
       displayName: First Step
+    - script: |
+        echo This is second step of second job.
+      displayName: Second Step
+    - script: |
+        echo This is third step of second job.
+      displayName: Third Step
   
   - job: ThirdJob
     displayName: 'Third Job'
@@ -95,5 +101,5 @@ stages:
     #Both condition: and dependsOn: should succeed to run this
     steps:
     - script: |
-        echo This is the first step of second job. This will run only if First Job succeeds because it dependsOn: FirstJob
+        echo This is the first step of fourth job. This will run only if First Job succeeds because it dependsOn: FirstJob
       displayName: First Step
