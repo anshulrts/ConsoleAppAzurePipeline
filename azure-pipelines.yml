@@ -87,3 +87,12 @@ stages:
     - script: |
         echo This job and step will always run as it does not dependsOn any job. It might even run before First Job because each job is independent of another
       displayName: First Step
+  
+  - job: FourthJob
+    displayName: 'Fourth Job'
+    condition: succeeded()
+    dependsOn: ThirdJob
+    steps:
+    - script: |
+        echo This is the first step of second job. This will run only if First Job succeeds because it dependsOn: FirstJob
+      displayName: First Step
