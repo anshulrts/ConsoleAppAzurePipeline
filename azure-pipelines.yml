@@ -91,7 +91,7 @@ stages:
   
   - job: FourthJob
     displayName: 'Fourth Job'
-    condition: succeeded()
+    condition: succeeded('ThirdJob')
     dependsOn: SecondJob
     steps:
     - script: |
