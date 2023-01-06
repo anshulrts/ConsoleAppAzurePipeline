@@ -130,40 +130,32 @@ stages:
     - script: |
         echo This is the update step
       displayName: Update Common DB
-      continueOnError: true
       condition: true
     - script: |
         echo This is the update step
       displayName: Update Data DB
-      continueOnError: true
       condition: true
     - script: |
         echo This is the update step
       displayName: Update Messaging DB
-      continueOnError: true
       condition: true  
     - script: |
         echo This is the update step
       displayName: Update Compliance DB
-      continueOnError: true
       condition: true  
     - script: |
         echo This is the update step
       displayName: Check Common
-      continueOnError: true
       condition: true  
     - script: |
         echo This is the update step
       displayName: Check Data DB
-      continueOnError: true
       condition: true  
     - script: |
         echo This is the update step
       displayName: Check Messaging DB
-      continueOnError: true
       condition: true  
     - script: |
         echo This is the update step
       displayName: Check Compliance DB
-      continueOnError: true
       condition: true
