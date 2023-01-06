@@ -124,12 +124,9 @@ stages:
         echo This is the first step
         throw "first exception"
       displayName: First Step
-      continueOnError: true
     - script: |
         echo This is the second step
       displayName: Second Step
-      continueOnError: true
-      condition: true
     - script: |
         echo This is the update step
       displayName: Update Common DB
