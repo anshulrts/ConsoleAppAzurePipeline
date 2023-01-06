@@ -107,6 +107,7 @@ stages:
 
   - job: WarningJob
     displayName: 'Warning Job'
+    steps:
     - task: PowerShell@2
       displayName: Log Warning
       inputs:
