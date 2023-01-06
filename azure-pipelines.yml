@@ -115,4 +115,4 @@ stages:
         targetType: 'inline'
         script: |
           # Write your PowerShell commands here.
-          Write-Host "##[warning]Warning message"
+          Write-Host "##vso[task.logissue type=warning;sourcepath=consoleapp/main.cs;linenumber=1;columnnumber=1;code=100;]Found something that could be a problem."
