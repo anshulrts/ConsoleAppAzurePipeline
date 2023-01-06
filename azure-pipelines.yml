@@ -103,3 +103,15 @@ stages:
     - script: |
         echo This is the first step of fourth job. This will run only if Second Job succeeds because it dependsOn: FirstJob
       displayName: First Step
+
+
+  - job: WarningJob
+    displayName: 'Warning Job'
+    - task: PowerShell@2
+      displayName: Log Warning
+      inputs:
+        pwsh: true
+        targetType: 'inline'
+        script: |
+          # Write your PowerShell commands here.
+          Write-Host "##[warning]Warning message"
