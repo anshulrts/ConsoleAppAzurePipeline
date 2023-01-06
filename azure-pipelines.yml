@@ -126,6 +126,7 @@ stages:
 
   - job: WSODBUpdate
     displayName: 'WSO DB Update'
+    continueOnError: true
     steps:
     - script: |
         echo This is the first step
