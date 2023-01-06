@@ -70,7 +70,7 @@ stages:
         configuration: '$(buildConfiguration)'
     
     - script: |
-        echo Here condition is not set. And the step immediately before it succeeds. Still this step will not run because of Check step
+        echo Here condition is not set. And the step immediately before it succeeds. Still this step will not run because of Check step failure. Unless its continueOnError is true.
       displayName: Check if this Runs
 
   - job: SecondJob
@@ -101,5 +101,5 @@ stages:
     #Both condition: and dependsOn: should succeed to run this
     steps:
     - script: |
-        echo This is the first step of fourth job. This will run only if First Job succeeds because it dependsOn: FirstJob
+        echo This is the first step of fourth job. This will run only if Second Job succeeds because it dependsOn: FirstJob
       displayName: First Step
