@@ -123,30 +123,40 @@ stages:
     - script: |
         echo This is the first step
       displayName: First Step
+      continueOnError: true
     - script: |
         echo This is the second step
       displayName: Second Step
+      continueOnError: true
     - script: |
         echo This is the update step
-      displayName: Update Common DB     
+      displayName: Update Common DB
+      continueOnError: true
     - script: |
         echo This is the update step
       displayName: Update Data DB
+      continueOnError: true
     - script: |
         echo This is the update step
-      displayName: Update Messaging DB    
+      displayName: Update Messaging DB
+      continueOnError: true      
     - script: |
         echo This is the update step
       displayName: Update Compliance DB
+      continueOnError: true
     - script: |
         echo This is the update step
       displayName: Check Common
+      continueOnError: true
     - script: |
         echo This is the update step
       displayName: Check Data DB
+      continueOnError: true
     - script: |
         echo This is the update step
       displayName: Check Messaging DB
+      continueOnError: true
     - script: |
         echo This is the update step
-      displayName: Check Compliance DB    
+      displayName: Check Compliance DB
+      continueOnError: true
