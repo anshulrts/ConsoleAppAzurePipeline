@@ -14,6 +14,13 @@ variables:
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
+parameters:
+  - name: BUSINESSUNIT
+    values:
+      - SERVICES
+      - NMGR
+      - HOSTING
+    default: SERVICES
 
 stages:
 - stage: Parent
@@ -159,3 +166,10 @@ stages:
         echo This is the update step
       displayName: Check Compliance DB
       condition: true
+
+  - job: WebDBUpdate
+    displayName: 'Web DB Update'
+    steps:
+    - script: |
+        echo This is the first step
+      displayName: First Step
