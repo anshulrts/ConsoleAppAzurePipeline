@@ -19,100 +19,134 @@ stages:
 - stage: Parent
   displayName: 'Parent - This is a Stage'
   jobs:
-  - job: FirstJob
-    displayName: 'First Job'
-    #continueOnError: true #Setting it here means that continue any other job which depends on it. So in this case, Second job will continue, but steps within this job will be skipped.
-    steps:
-    - script: echo This is the first step
-    - task: PowerShell@2
-      displayName: Check Security/Common DB
-      continueOnError: true
-      inputs:
-        pwsh: true
-        targetType: 'inline'
-        script: |
-          # Write your PowerShell commands here.
-          Write-Host "Reached Here-----------------*-------------------"
-          $allLogs = $null
-          $success = $true
-          $errorMessage = ""
-          try {
-            $allLogs = check.ps1
-          }
-          catch {
-            $success = $false
-            $errorMessage = $_
-          }
+  # - job: FirstJob
+    # displayName: 'First Job'
+    # #continueOnError: true #Setting it here means that continue any other job which depends on it. So in this case, Second job will continue, but steps within this job will be skipped.
+    # steps:
+    # - script: echo This is the first step
+    # - task: PowerShell@2
+      # displayName: Check Security/Common DB
+      # continueOnError: true
+      # inputs:
+        # pwsh: true
+        # targetType: 'inline'
+        # script: |
+          # # Write your PowerShell commands here.
+          # Write-Host "Reached Here-----------------*-------------------"
+          # $allLogs = $null
+          # $success = $true
+          # $errorMessage = ""
+          # try {
+            # $allLogs = check.ps1
+          # }
+          # catch {
+            # $success = $false
+            # $errorMessage = $_
+          # }
 
-          Write-Host "Logs....."
-          $allLogs | Write-Host
-          Write-Host "After..."
+          # Write-Host "Logs....."
+          # $allLogs | Write-Host
+          # Write-Host "After..."
 
 
-          if (-Not $success) {
-            Write-Error $errorMessage
-          }
+          # if (-Not $success) {
+            # Write-Error $errorMessage
+          # }
 
-    - task: PowerShell@2
-      displayName: New Step
-      inputs:
-        pwsh: true
-        targetType: 'inline'
-        script: |
-          # Write your PowerShell commands here.
-          Write-Host "This is new step"
+    # - task: PowerShell@2
+      # displayName: New Step
+      # inputs:
+        # pwsh: true
+        # targetType: 'inline'
+        # script: |
+          # # Write your PowerShell commands here.
+          # Write-Host "This is new step"
     
-    - task: VSTest@2
-      condition: failed()
-      displayName: Run this if Check fails
-      inputs:
-        platform: '$(buildPlatform)'
-        configuration: '$(buildConfiguration)'
+    # - task: VSTest@2
+      # condition: failed()
+      # displayName: Run this if Check fails
+      # inputs:
+        # platform: '$(buildPlatform)'
+        # configuration: '$(buildConfiguration)'
     
-    - script: |
-        echo Here condition is not set. And the step immediately before it succeeds. Still this step will not run because of Check step failure. Unless its continueOnError is true.
-      displayName: Check if this Runs
+    # - script: |
+        # echo Here condition is not set. And the step immediately before it succeeds. Still this step will not run because of Check step failure. Unless its continueOnError is true.
+      # displayName: Check if this Runs
 
-  - job: SecondJob
-    displayName: 'Second Job'
-    dependsOn: FirstJob
+  # - job: SecondJob
+    # displayName: 'Second Job'
+    # dependsOn: FirstJob
+    # steps:
+    # - script: |
+        # echo This is the first step of second job. This will run only if First Job succeeds because it dependsOn: FirstJob
+      # displayName: First Step
+    # - script: |
+        # echo This is second step of second job.
+      # displayName: Second Step
+    # - script: |
+        # echo This is third step of second job.
+      # displayName: Third Step
+  
+  # - job: ThirdJob
+    # displayName: 'Third Job'
+    # steps:
+    # - script: |
+        # echo This job and step will always run as it does not dependsOn any job. It might even run before First Job because each job is independent of another
+      # displayName: First Step
+  
+  # - job: FourthJob
+    # displayName: 'Fourth Job'
+    # condition: succeeded('ThirdJob')
+    # dependsOn: SecondJob
+    # #Both condition: and dependsOn: should succeed to run this
+    # steps:
+    # - script: |
+        # echo This is the first step of fourth job. This will run only if Second Job succeeds because it dependsOn: FirstJob
+      # displayName: First Step
+
+
+  # - job: WarningJob
+    # displayName: 'Warning Job'
+    # steps:
+    # - task: PowerShell@2
+      # displayName: Log Warning
+      # inputs:
+        # pwsh: true
+        # targetType: 'inline'
+        # script: |
+          # # Write your PowerShell commands here.
+          # Write-Host "##vso[task.complete result=SucceededWithIssues;]"
+
+  - job: WSODBUpdate
+    displayName: 'WSO DB Update'
     steps:
     - script: |
-        echo This is the first step of second job. This will run only if First Job succeeds because it dependsOn: FirstJob
+        echo This is the first step
       displayName: First Step
     - script: |
-        echo This is second step of second job.
+        echo This is the second step
       displayName: Second Step
     - script: |
-        echo This is third step of second job.
-      displayName: Third Step
-  
-  - job: ThirdJob
-    displayName: 'Third Job'
-    steps:
+        echo This is the update step
+      displayName: Update Common DB     
     - script: |
-        echo This job and step will always run as it does not dependsOn any job. It might even run before First Job because each job is independent of another
-      displayName: First Step
-  
-  - job: FourthJob
-    displayName: 'Fourth Job'
-    condition: succeeded('ThirdJob')
-    dependsOn: SecondJob
-    #Both condition: and dependsOn: should succeed to run this
-    steps:
+        echo This is the update step
+      displayName: Update Data DB
     - script: |
-        echo This is the first step of fourth job. This will run only if Second Job succeeds because it dependsOn: FirstJob
-      displayName: First Step
-
-
-  - job: WarningJob
-    displayName: 'Warning Job'
-    steps:
-    - task: PowerShell@2
-      displayName: Log Warning
-      inputs:
-        pwsh: true
-        targetType: 'inline'
-        script: |
-          # Write your PowerShell commands here.
-          Write-Host "##vso[task.complete result=SucceededWithIssues;]"
+        echo This is the update step
+      displayName: Update Messaging DB    
+    - script: |
+        echo This is the update step
+      displayName: Update Compliance DB
+    - script: |
+        echo This is the update step
+      displayName: Check Common
+    - script: |
+        echo This is the update step
+      displayName: Check Data DB
+    - script: |
+        echo This is the update step
+      displayName: Check Messaging DB
+    - script: |
+        echo This is the update step
+      displayName: Check Compliance DB    
