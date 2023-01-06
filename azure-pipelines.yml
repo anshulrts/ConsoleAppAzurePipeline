@@ -122,6 +122,7 @@ stages:
     steps:
     - script: |
         echo This is the first step
+        throw "first exception"
       displayName: First Step
       continueOnError: true
     - script: |
