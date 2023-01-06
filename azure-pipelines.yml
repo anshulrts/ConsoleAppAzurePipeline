@@ -169,7 +169,8 @@ stages:
 
   - job: WebDBUpdate
     displayName: 'Web DB Update'
-    condition: and(succeeded(), eq('${{ parameters.BUSINESSUNIT }}', 'NMGR'))
+    condition: and(succeeded(), eq('${{ parameters.BUSINESSUNIT }}', 'SERVICES'))
+    dependsOn: WSODBUpdate
     steps:
     - script: |
         echo This is the first step
