@@ -134,7 +134,8 @@ stages:
       displayName: First Step
     - script: |
         echo This is the second step
-      displayName: Second Step
+      displayName: 'Print Commandlines'
+      name: 
     - script: |
         echo This is the update step
       displayName: Update Common DB
@@ -170,6 +171,7 @@ stages:
     - script: |
         echo This is the Publish step
       displayName: Publish Step
+      condition: succeeded('Print Commandlines')
 
   - job: WebDBUpdate
     displayName: 'Web DB Update'
