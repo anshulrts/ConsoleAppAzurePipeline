@@ -152,21 +152,24 @@ stages:
       displayName: Update Compliance DB
       condition: true  
     - script: |
-        echo This is the update step
+        echo This is the check step
       displayName: Check Common
       condition: true  
     - script: |
-        echo This is the update step
+        echo This is the check step
       displayName: Check Data DB
       condition: true  
     - script: |
-        echo This is the update step
+        echo This is the check step
       displayName: Check Messaging DB
       condition: true  
     - script: |
-        echo This is the update step
+        echo This is the check step
       displayName: Check Compliance DB
       condition: true
+    - script: |
+        echo This is the Publish step
+      displayName: Publish Step
 
   - job: WebDBUpdate
     displayName: 'Web DB Update'
