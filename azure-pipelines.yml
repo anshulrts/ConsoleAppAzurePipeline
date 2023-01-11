@@ -171,7 +171,7 @@ stages:
     - script: |
         echo This is the Publish step
       displayName: Publish Step
-      dependsOn: 'Print Commandlines'
+      condition: succeededOrFailed()
 
   - job: WebDBUpdate
     displayName: 'Web DB Update'
