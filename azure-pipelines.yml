@@ -170,6 +170,7 @@ stages:
       condition: true
     - task: PowerShell@2
       displayName: Check Security/Common DB
+      condition: true
       inputs:
         pwsh: true
         targetType: 'inline'
