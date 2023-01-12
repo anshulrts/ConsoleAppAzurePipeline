@@ -198,3 +198,7 @@ stages:
     - script: |
         echo This is the first step
       displayName: First Step
+    - script: |
+        #!/bin/bash
+        echo "##vso[task.logissue type=error]Something went very wrong."
+      displayName: Log Issue Command
