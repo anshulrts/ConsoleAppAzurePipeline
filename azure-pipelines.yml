@@ -179,7 +179,7 @@ stages:
           
           $allLogs = @("C#", "Java NEW", "Not all SQL scripts executed successfully")
           
-          if ($allLogs.Contains("Not all SQL scripts executed successfully")
+          if ($allLogs.Contains("Not all SQL scripts executed successfully"))
           {
             Write-Output "##vso[task.complete result=SucceededWithIssues;]"
           }
