@@ -181,7 +181,8 @@ stages:
           
           if ($allLogs.Contains("Not all SQL scripts executed successfully"))
           {
-            Write-Output "##vso[task.complete result=SucceededWithIssues;]Test value"
+            Write-Output "Completed with warnings"
+            Write-Output "##vso[task.complete result=SucceededWithIssues;]"
           }
           
     - script: |
