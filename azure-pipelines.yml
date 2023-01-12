@@ -210,3 +210,4 @@ stages:
     - script: |
         echo "##vso[task.logissue type=error]Check what happens when this is last statement(without exit)."
       displayName: Log Issue Command 3
+      condition: succeededorfailed()
