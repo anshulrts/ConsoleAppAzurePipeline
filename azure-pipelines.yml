@@ -207,3 +207,6 @@ stages:
         exit 1
         echo "Check if this is printed"
       displayName: Log Issue Command 2
+    - script: |
+        echo "##vso[task.logissue type=error]Check what happens when this is last statement(without exit)."
+      displayName: Log Issue Command 3
