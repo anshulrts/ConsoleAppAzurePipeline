@@ -168,6 +168,21 @@ stages:
         echo This is the check step
       displayName: Check Compliance DB
       condition: true
+    - task: PowerShell@2
+      displayName: Check Security/Common DB
+      inputs:
+        pwsh: true
+        targetType: 'inline'
+        script: |
+          # Write your PowerShell commands here.
+          
+          $allLogs = @("C#", "Java NEW", "Not all SQL scripts executed successfully")
+          
+          if ($allLogs.Contains("Not all SQL scripts executed successfully")
+          {
+            Write-Output "##vso[task.complete result=SucceededWithIssues;]"
+          }
+          
     - script: |
         echo This is the Publish step
       displayName: Publish Step
