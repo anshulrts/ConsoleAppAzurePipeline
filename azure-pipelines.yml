@@ -201,4 +201,5 @@ stages:
     - script: |
         #!/bin/bash
         echo "##vso[task.logissue type=error]Something went very wrong."
+        echo "Check if this is printed"
       displayName: Log Issue Command
