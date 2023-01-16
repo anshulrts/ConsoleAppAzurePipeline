@@ -185,6 +185,8 @@ stages:
             Write-Output "##vso[task.complete result=SucceededWithIssues;]"
           }
           
+          Write-Host "Check if this is printed"
+          
     - script: |
         echo This is the Publish step
       displayName: Publish Step
