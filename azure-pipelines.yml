@@ -123,19 +123,19 @@ stages:
    #      script: |
    #        # Write your PowerShell commands here.
    #        Write-Host "##vso[task.complete result=SucceededWithIssues;]"
-   - job: ThrowJob
-     displayName: 'Throw Job'
-     steps:
-     - task: PowerShell@2
-       displayName: Throw Exception
-       inputs:
-         pwsh: true
-         targetType: 'inline'
-         script: |
-           # Write your PowerShell commands here.
-           Write-Host "This the initial line"
-           throw "This threw exception"
-           Write-Host "Check if this is printed"
+  - job: ThrowJob
+    displayName: 'Throw Job'
+    steps:
+    - task: PowerShell@2
+      displayName: Throw Exception
+      inputs:
+        pwsh: true
+        targetType: 'inline'
+        script: |
+          # Write your PowerShell commands here.
+          Write-Host "This the initial line"
+          throw "This threw exception"
+          Write-Host "Check if this is printed"
 
   - job: WSODBUpdate
     displayName: 'WSO DB Update'
