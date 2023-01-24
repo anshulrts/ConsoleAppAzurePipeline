@@ -131,6 +131,7 @@ stages:
     - script: |
         echo This is the first step
         throw "first exception"
+        echo "Check if this is printed"
       displayName: First Step
     - script: |
         echo This is the second step
