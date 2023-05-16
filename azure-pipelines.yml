@@ -10,11 +10,15 @@ pool:
   vmImage: 'windows-latest'
 
 variables:
+  - name : CheckAfterParameter
+    value : ${{ parameters.BUSINESSUNIT }}-${{ parameters.BUSINESSUNIT }}
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-    - name : CheckAfterParameter
-      value : ${{ parameters.BUSINESSUNIT }}-${{ parameters.BUSINESSUNIT }}
+
+variables:
+  - name: disaster_recovery
+    value: 'false'
 
 parameters:
   - name: BUSINESSUNIT
