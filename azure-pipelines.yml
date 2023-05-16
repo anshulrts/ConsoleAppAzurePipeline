@@ -13,8 +13,8 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  - name : CheckAfterParameter
-    value : ${{ parameters.BUSINESSUNIT }}-${{ parameters.BUSINESSUNIT }}
+    - name : CheckAfterParameter
+      value : ${{ parameters.BUSINESSUNIT }}-${{ parameters.BUSINESSUNIT }}
 
 parameters:
   - name: BUSINESSUNIT
