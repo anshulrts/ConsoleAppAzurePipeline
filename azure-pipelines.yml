@@ -13,6 +13,8 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
+  - name : CheckAfterParameter
+    value : ${{ parameters.BUSINESSUNIT }}-${{ parameters.BUSINESSUNIT }}
 
 parameters:
   - name: BUSINESSUNIT
@@ -226,3 +228,6 @@ stages:
         echo "##vso[task.logissue type=error]Check what happens when this is last statement(without exit)."
       displayName: Log Issue Command 3
       condition: succeededorfailed()
+    - script: |
+        echo This step checks if variable value was assigned properly or not. Check step name
+      displayName: ${{ variables.CheckAfterParameter }}
