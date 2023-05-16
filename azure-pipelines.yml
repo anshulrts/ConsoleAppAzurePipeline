@@ -13,10 +13,6 @@ variables:
   - name : CheckAfterParameter
     value : ${{ parameters.BUSINESSUNIT }}-${{ parameters.BUSINESSUNIT }}
 
-variables:
-  - name: disaster_recovery
-    value: 'false'
-
 parameters:
   - name: BUSINESSUNIT
     values:
