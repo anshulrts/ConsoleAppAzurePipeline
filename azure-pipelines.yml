@@ -12,9 +12,6 @@ pool:
 variables:
   - name : CheckAfterParameter
     value : ${{ parameters.BUSINESSUNIT }}-${{ parameters.BUSINESSUNIT }}
-  solution: '**/*.sln'
-  buildPlatform: 'Any CPU'
-  buildConfiguration: 'Release'
 
 variables:
   - name: disaster_recovery
@@ -74,13 +71,6 @@ stages:
         # script: |
           # # Write your PowerShell commands here.
           # Write-Host "This is new step"
-    
-    # - task: VSTest@2
-      # condition: failed()
-      # displayName: Run this if Check fails
-      # inputs:
-        # platform: '$(buildPlatform)'
-        # configuration: '$(buildConfiguration)'
     
     # - script: |
         # echo Here condition is not set. And the step immediately before it succeeds. Still this step will not run because of Check step failure. Unless its continueOnError is true.
