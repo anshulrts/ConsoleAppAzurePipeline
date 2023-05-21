@@ -6,6 +6,5 @@ stages:
   jobs:
     - job:
       displayName: "This is Template_Stage Job 1"
-      pool: 'windows-latest'
       steps:
       - script: echo "This is Job 1 Step 1"
