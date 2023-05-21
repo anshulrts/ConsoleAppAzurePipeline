@@ -1,0 +1,15 @@
+trigger:
+- none
+
+pool:
+  vmImage: 'windows-latest'
+
+
+stages:
+- stage: Stage
+  displayName: "This is Template_Stage Stage"
+  jobs:
+    - job:
+      displayName: "This is Template_Stage Job 1"
+      steps:
+      - script: echo "This is Job 1 Step 1"

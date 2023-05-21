@@ -221,3 +221,5 @@ stages:
     - script: |
         echo This step checks if variable value was assigned properly or not. Check step name
       displayName: ${{ variables.CheckAfterParameter }}
+
+- template: template_stage.yml
