@@ -33,9 +33,7 @@ stages:
     - script: echo "This is the first step to test"
     - download: current
       artifact: myWebsiteName
-    - task: PowerShell@2
-      targetType: 'inline'
-      script: |
+    - script: |
         echo "Structure of work folder of this pipeline:"
         tree $(Agent.WorkFolder)\1 /f
         echo "Build.ArtifactStagingDirectory:" 
