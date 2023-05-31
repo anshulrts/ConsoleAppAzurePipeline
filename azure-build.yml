@@ -30,6 +30,8 @@ stages:
     displayName: Run the Solution
     steps:
     - script: echo "This is the first step to test"
+    - download: current
+      artifact: myWebsiteName
     - task: PowerShell@2
       displayName: Run the exe from Powershell Core
       inputs:
