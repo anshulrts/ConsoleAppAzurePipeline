@@ -21,3 +21,18 @@ stages:
       inputs:
         targetPath: '$(Build.ArtifactStagingDirectory)' 
         artifactName: 'myWebsiteName'
+        
+- stage: Run
+  displayName: Run the Solution
+  jobs:
+  - job: Run
+    displayName: Run the Solution
+    steps:
+    - script: echo "This is the first step to test"
+    - task: PowerShell@2
+      displayName: Run the exe from Powershell Core
+      inputs:
+        pwsh: true
+        workingDirectory: $(Build.ArtifactStagingDirectory)
+        targetType: 'inline'
+        script: & .\ConsoleAppAzurePipeline.exe
