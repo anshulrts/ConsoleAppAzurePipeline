@@ -21,6 +21,9 @@ stages:
       inputs:
         targetPath: '$(Build.ArtifactStagingDirectory)' 
         artifactName: 'myWebsiteName'
+    - script: |
+        echo "Structure of work folder of this pipeline:"
+        tree $(Agent.WorkFolder)\1 /f
         
 - stage: Run_Stage
   displayName: Run the Solution
