@@ -16,6 +16,7 @@ stages:
       inputs:
         command: build
         projects: '**/*.csproj'
+        arguments: '--output $(Build.ArtifactStagingDirectory)'
     - task: PublishPipelineArtifact@1
       inputs:
         targetPath: '$(Build.ArtifactStagingDirectory)' 
