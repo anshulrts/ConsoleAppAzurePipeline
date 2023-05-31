@@ -33,6 +33,5 @@ stages:
     - task: PowerShell@2
       displayName: Run the exe from Powershell Core
       inputs:
-        pwsh: true
         targetType: 'inline'
         script: & .\ConsoleAppAzurePipeline.exe
