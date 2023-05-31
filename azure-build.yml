@@ -1,5 +1,4 @@
-trigger:
-- none
+trigger: none
 
 pool:
   vmImage: 'windows-latest'
@@ -17,3 +16,7 @@ stages:
       inputs:
         command: build
         projects: '**/*.csproj'
+    - task: PublishPipelineArtifact@1
+      inputs:
+        targetPath: '$(Build.ArtifactStagingDirectory)' 
+        artifactName: 'myWebsiteName'
