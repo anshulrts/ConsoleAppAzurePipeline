@@ -4,10 +4,10 @@ pool:
   vmImage: 'windows-latest'
   
 stages:
-- stage: Build
+- stage: Build_Stage
   displayName: Build the Solution
   jobs:
-  - job: Build
+  - job: Build_Job
     displayName: Build the Solution
     steps:
     - script: echo "This is the first step to test"
@@ -22,10 +22,11 @@ stages:
         targetPath: '$(Build.ArtifactStagingDirectory)' 
         artifactName: 'myWebsiteName'
         
-- stage: Run
+- stage: Run_Stage
   displayName: Run the Solution
+  dependsOn: Build_Stage
   jobs:
-  - job: Run
+  - job: Run_Job
     displayName: Run the Solution
     steps:
     - script: echo "This is the first step to test"
@@ -33,6 +34,5 @@ stages:
       displayName: Run the exe from Powershell Core
       inputs:
         pwsh: true
-        workingDirectory: $(Build.ArtifactStagingDirectory)
         targetType: 'inline'
         script: & .\ConsoleAppAzurePipeline.exe
