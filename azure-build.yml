@@ -29,6 +29,7 @@ stages:
   - job: Run_Job
     displayName: Run the Solution
     steps:
+    - checkout: none
     - script: echo "This is the first step to test"
     - download: current
       artifact: myWebsiteName
