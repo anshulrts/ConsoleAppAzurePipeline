@@ -42,6 +42,8 @@ stages:
         echo "$(Build.BinariesDirectory)"
         echo "Build.SourcesDirectory:"
         echo "$(Build.SourcesDirectory)"
+        echo "Pipeline.Workspace"
+        echo "$(Pipeline.Workspace)"
     - task: PowerShell@2
       displayName: Run the exe from Powershell Core
       inputs:
