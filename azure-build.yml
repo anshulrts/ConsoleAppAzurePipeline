@@ -1,0 +1,19 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'windows-latest'
+  
+stages:
+- stage: Build
+  displayName: Build the Solution
+  jobs:
+  - job: Build
+    displayName: Build the Solution
+    steps:
+    - script: echo "This is the first step to test"
+    - task: DotNetCoreCLI@2
+        displayName: Build
+        inputs:
+        command: build
+        projects: '**/*.csproj'
