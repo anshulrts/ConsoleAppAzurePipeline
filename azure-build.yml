@@ -33,6 +33,7 @@ stages:
     - script: echo "This is the first step to test"
     - download: current
       artifact: myWebsiteName
+      targetPath: '$(Pipeline.Workspace)'
     - task: PowerShell@2
       displayName: Run the exe from Powershell Core
       inputs:
