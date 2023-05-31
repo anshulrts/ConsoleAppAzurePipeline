@@ -49,4 +49,4 @@ stages:
       inputs:
         targetType: 'inline'
         script: '& .\ConsoleAppAzurePipeline.exe'
-        workingDirectory: '$(Pipeline.Workspace)'
+        workingDirectory: '$(Pipeline.Workspace)\myWebsiteName'
