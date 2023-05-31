@@ -34,4 +34,4 @@ stages:
       displayName: Run the exe from Powershell Core
       inputs:
         targetType: 'inline'
-        script: & .\ConsoleAppAzurePipeline.exe
+        script: '& .\ConsoleAppAzurePipeline.exe'
