@@ -1,0 +1,30 @@
+trigger: none
+
+pool:
+  vmImage: 'windows-latest'
+
+parameters:
+  - name: businessUnit
+    values:
+      - SERVICES
+      - NMGR
+      - HOSTING
+    default: SERVICES
+  - name: customer
+    type: string
+
+variables:
+  - name: ManualWaitDependsOn
+    ${{ if or(eq(parameters.businessUnit, 'services'), in( '${{upper(parameters.customer)}}', 'RPTW', 'RPTA')) }}:
+      value: "Web"
+    ${{ else }}:
+      value: "WSO"
+
+jobs:
+- job: TestVariables
+  displayName: Test Variables
+  steps:
+  - script: |
+      echo "Reached Here"
+      echo ${{ variables.ManualWaitDependsOn }}
+  
