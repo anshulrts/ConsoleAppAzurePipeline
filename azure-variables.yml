@@ -15,7 +15,7 @@ parameters:
 
 variables:
   - name: ManualWaitDependsOn
-    ${{ if or(eq(parameters.businessUnit, 'services'), in( '${{upper(parameters.customer)}}', 'RPTW', 'RPTA')) }}:
+    ${{ if or(eq(parameters.businessUnit, 'services'), in( ${{upper(parameters.customer)}}, 'RPTW', 'RPTA')) }}:
       value: "Web"
     ${{ else }}:
       value: "WSO"
