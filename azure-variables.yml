@@ -27,4 +27,5 @@ jobs:
   - script: |
       echo "Reached Here"
       echo ${{ variables.ManualWaitDependsOn }}
+      echo ${{ in( '${{upper(parameters.customer)}}', 'RPTW', 'RPTA') }}
   
